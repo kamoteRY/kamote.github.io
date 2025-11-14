@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Loja</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f8f8f8;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    button {
+      background: #111;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+
+<header>Minha Loja Oficial</header>
+
+<section class="produtos">
+
+  <div class="card">
+    <img src="https://via.placeholder.com/300" alt="Produto">
+    <h3>Produto 1</h3>
+    <p>Descrição curta do produto.</p>
+    <button onclick="window.open('LINK-DE-PAGAMENTO-AQUI')">Comprar</button>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/300" alt="Produto">
+    <h3>Produto 2</h3>
+    <p>Descrição curta.</p>
+    <button onclick="window.open('LINK-DE-PAGAMENTO-AQUI')">Comprar</button>
+  </div>
+
+</section>
+
+</body>
+</html>
