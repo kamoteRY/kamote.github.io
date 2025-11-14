@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minha Loja</title>
+  <title>Loja Kamote</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0; padding: 0;
-      background: #f8f8f8;
+      background: #0d0d0d;
+      color: #fff;
     }
 
     header {
@@ -16,7 +17,9 @@
       color: white;
       padding: 20px;
       text-align: center;
-      font-size: 22px;
+      font-size: 26px;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #444;
     }
 
     .produtos {
@@ -27,20 +30,25 @@
     }
 
     .card {
-      background: white;
+      background: #1a1a1a;
       padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
       text-align: center;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
     }
 
     img {
       width: 100%;
-      border-radius: 8px;
+      border-radius: 10px;
     }
 
     button {
-      background: #111;
+      background: #0066ff;
       color: white;
       border: none;
       padding: 10px 15px;
@@ -48,31 +56,32 @@
       cursor: pointer;
       border-radius: 8px;
       font-size: 16px;
+      width: 100%;
     }
 
     button:hover {
-      background: #444;
+      background: #3385ff;
     }
   </style>
 </head>
 <body>
 
-<header>Minha Loja Oficial</header>
+<header>Loja Kamote Oficial</header>
 
 <section class="produtos">
 
   <div class="card">
-    <img src="https://via.placeholder.com/300" alt="Produto">
+    <img src="https://via.placeholder.com/300" alt="Produto 1">
     <h3>Produto 1</h3>
-    <p>Descrição curta do produto.</p>
-    <button onclick="window.open('LINK-DE-PAGAMENTO-AQUI')">Comprar</button>
+    <p>Descrição curta.</p>
+    <button onclick="window.open('https://link-do-mercado-pago')">Comprar</button>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/300" alt="Produto">
+    <img src="https://via.placeholder.com/300" alt="Produto 2">
     <h3>Produto 2</h3>
     <p>Descrição curta.</p>
-    <button onclick="window.open('LINK-DE-PAGAMENTO-AQUI')">Comprar</button>
+    <button onclick="window.open('https://link-do-mercado-pago')">Comprar</button>
   </div>
 
 </section>
