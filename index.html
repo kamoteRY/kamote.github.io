@@ -3,137 +3,718 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja oficial</title>
-
+    <title>Loja Oficial - Produtos Premium com Entrega Segura e Suporte 24/7</title>
+    <meta name="description" content="Descubra produtos de alta qualidade na Loja Oficial. Garantia de satisfação, pagamento seguro e frete grátis em compras acima de R$ 99. Em breve, nosso catálogo completo!">
+    <meta name="keywords" content="loja oficial, produtos premium, compras online, entrega segura">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
-            font-family: Arial, sans-serif;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
             background: #0f0f0f;
             color: #eee;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-
-        header {
-            padding: 25px;
-            background: #121212;
-            border-bottom: 1px solid #222;
-            text-align: center;
-            font-size: 32px;
-            font-weight: bold;
-            color: #00eaff;
-            letter-spacing: 1px;
-        }
-
-        .hero {
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 40px;
-            margin-bottom: 10px;
-            color: #00eaff;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #ccc;
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin: 50px 0 20px;
-            font-size: 26px;
-            color: #00eaff;
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            padding: 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .card {
-            background: #151515;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #222;
-            text-align: center;
-        }
-
-        .card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .card h3 {
-            margin: 15px 0 5px;
-            color: #00eaff;
-        }
-
-        .card p {
-            color: #bbb;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 10px 18px;
-            background: #00eaff;
-            color: #111;
-            font-weight: bold;
-            border-radius: 6px;
+        a {
             text-decoration: none;
         }
-
-        footer {
-            margin-top: 60px;
-            text-align: center;
-            padding: 25px;
+        header {
             background: #121212;
+            border-bottom: 1px solid #222;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        header.scrolled {
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-container img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #00eaff;
+            background: #00eaff;
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover img {
+            transform: rotate(360deg);
+        }
+        .logo-container h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #00eaff;
+            letter-spacing: 0.5px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        nav a {
+            color: #eee;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        nav a:hover {
+            color: #00eaff;
+            transform: translateY(-2px);
+        }
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #eee;
+            transition: color 0.3s ease;
+        }
+        .cart-icon:hover {
+            color: #00eaff;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #00eaff;
+            color: #111;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            animation: bounce 0.6s ease;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 234, 255, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #00eaff;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #00eaff;
+            color: #111;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 234, 255, 0.3);
+        }
+        .trust-section {
+            padding: 4rem 2rem;
+            background: #151515;
+            text-align: center;
+        }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        .trust-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .trust-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .trust-item:nth-child(1) { transition-delay: 0.1s; }
+        .trust-item:nth-child(2) { transition-delay: 0.2s; }
+        .trust-item:nth-child(3) { transition-delay: 0.3s; }
+        .trust-item:nth-child(4) { transition-delay: 0.4s; }
+        .trust-item i {
+            font-size: 2.5rem;
+            color: #00eaff;
+            transition: transform 0.3s ease;
+        }
+        .trust-item:hover i {
+            transform: scale(1.1);
+        }
+        .trust-item h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #eee;
+        }
+        .section-title {
+            text-align: center;
+            margin: 4rem 0 2rem;
+            font-size: 2.25rem;
+            color: #00eaff;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .section-title.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem 4rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .card {
+            background: #151515;
+            border: 1px solid #222;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card:nth-child(1) { transition-delay: 0.1s; }
+        .card:nth-child(2) { transition-delay: 0.2s; }
+        .card:nth-child(3) { transition-delay: 0.3s; }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 234, 255, 0.15);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .card:hover img {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+        .card-content {
+            padding: 1.5rem;
+        }
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: #00eaff;
+            font-weight: 600;
+        }
+        .card p {
+            color: #bbb;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #00eaff;
+            color: #111;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+        .btn:hover:not(:disabled) {
+            background: #00c8ff;
+            transform: scale(1.05);
+        }
+        .btn:disabled {
+            background: #333;
             color: #777;
+            cursor: not-allowed;
+        }
+        .testimonials {
+            padding: 4rem 2rem;
+            background: #121212;
+            text-align: center;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+        .testimonial {
+            background: #151515;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #00eaff;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .testimonial.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .testimonial:nth-child(1) { transition-delay: 0.1s; }
+        .testimonial:nth-child(2) { transition-delay: 0.2s; }
+        .testimonial:nth-child(3) { transition-delay: 0.3s; }
+        .testimonial p {
+            font-style: italic;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        .testimonial cite {
+            color: #00eaff;
+            font-weight: 500;
+        }
+        footer {
+            background: #0a0a0a;
+            color: #777;
+            text-align: center;
+            padding: 2rem;
             border-top: 1px solid #222;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .social-links a {
+            color: #777;
+            font-size: 1.25rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #00eaff;
+            transform: rotate(360deg);
+        }
+        /* Modal do Carrinho */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 200;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .cart-modal.show {
+            display: block;
+            opacity: 1;
+        }
+        .cart-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: #151515;
+            border: 1px solid #222;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+        }
+        .cart-modal.show .cart-content {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .cart-header {
+            padding: 1rem;
+            border-bottom: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-header h2 {
+            color: #00eaff;
+        }
+        .close-cart {
+            background: none;
+            border: none;
+            color: #eee;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close-cart:hover {
+            color: #00eaff;
+        }
+        .cart-items {
+            padding: 1rem;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #222;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .cart-item.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .cart-item span {
+            color: #ccc;
+        }
+        .remove-item {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .remove-item:hover {
+            background: #cc0000;
+        }
+        .cart-total {
+            padding: 1rem;
+            border-top: 1px solid #222;
+            text-align: right;
+        }
+        .cart-total p {
+            font-size: 1.25rem;
+            color: #00eaff;
+            font-weight: 600;
+        }
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #00eaff;
+            color: #111;
+            border: none;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+        .checkout-btn:hover {
+            background: #00c8ff;
+        }
+        .empty-cart {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            nav ul {
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            .trust-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
         }
     </style>
 </head>
-
 <body>
+    <header id="header">
+        <div class="logo-container">
+            <img src="https://via.placeholder.com/50x50/00eaff/111?text=LO" alt="Logo da Loja Oficial">
+            <h1>Loja Oficial</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" id="cartIcon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount" style="display: none;">0</span>
+        </div>
+    </header>
 
-<header>Loja Oficial</header>
+    <section id="home" class="hero">
+        <h1>Bem-vindo à Loja Oficial</h1>
+        <p>Descubra produtos premium selecionados com cuidado. Garantimos qualidade, entrega rápida e suporte dedicado para sua total satisfação.</p>
+        <a href="#produtos" class="cta-btn">Explorar Produtos</a>
+    </section>
 
-<section class="hero">
-    <h1>Bem-vindo à Loja</h1>
-    <p>Em breve nossos produtos estarão disponíveis. Por enquanto, aproveite o visual preparado para seu futuro catálogo.</p>
-</section>
+    <section class="trust-section">
+        <div class="trust-grid">
+            <div class="trust-item">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Pagamento Seguro</h3>
+                <p>Proteção total com criptografia SSL</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-truck"></i>
+                <h3>Frete Grátis</h3>
+                <p>Em compras acima de R$ 99</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-headset"></i>
+                <h3>Suporte 24/7</h3>
+                <p>Ajuda imediata via chat ou email</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-undo"></i>
+                <h3>Devolução Fácil</h3>
+                <p>30 dias para devolução sem custo</p>
+            </div>
+        </div>
+    </section>
 
-<h2 class="section-title">Produtos (em breve)</h2>
-
-<div class="products">
-
-    <div class="card">
-        <img src="https://via.placeholder.com/400x250" alt="Produto">
-        <h3>Produto Exemplo</h3>
-        <p>Descrição do produto futuramente.</p>
-        <a href="#" class="btn">Indisponível</a>
+    <h2 id="produtos" class="section-title">Nossos Produtos Premium</h2>
+    <div class="products">
+        <div class="card" data-product-id="1" data-product-name="Produto Premium Exemplo" data-product-price="99.99">
+            <img src="https://via.placeholder.com/400x250/151515/00eaff?text=Produto+1" alt="Produto Exemplo 1">
+            <div class="card-content">
+                <h3>Produto Premium Exemplo</h3>
+                <p>Descrição detalhada do produto, destacando benefícios e qualidade superior. Em breve disponível para compra.</p>
+                <button class="btn add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+        <div class="card" data-product-id="2" data-product-name="Inovador e Confiável" data-product-price="149.99">
+            <img src="https://via.placeholder.com/400x250/151515/00eaff?text=Produto+2" alt="Produto Exemplo 2">
+            <div class="card-content">
+                <h3>Inovador e Confiável</h3>
+                <p>Item de alta performance, projetado para durar. Aguarde o lançamento exclusivo.</p>
+                <button class="btn add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+        <div class="card" data-product-id="3" data-product-name="Essencial Diário" data-product-price="79.99">
+            <img src="https://via.placeholder.com/400x250/151515/00eaff?text=Produto+3" alt="Produto Exemplo 3">
+            <div class="card-content">
+                <h3>Essencial Diário</h3>
+                <p>Produto cotidiano com toques de luxo. Prepare-se para adicionar ao carrinho.</p>
+                <button class="btn add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-        <img src="https://via.placeholder.com/400x250" alt="Produto">
-        <h3>Outro Produto</h3>
-        <p>Adicione seus itens quando estiver pronto.</p>
-        <a href="#" class="btn">Indisponível</a>
+    <section class="testimonials">
+        <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <p>"Excelente qualidade e entrega super rápida. Recomendo 100%!"</p>
+                <cite>- Maria S., Cliente Satisfeita</cite>
+            </div>
+            <div class="testimonial">
+                <p>"Suporte incrível, resolveram meu problema em minutos. Confio nessa loja!"</p>
+                <cite>- João P., Comprador Frequente</cite>
+            </div>
+            <div class="testimonial">
+                <p>"Produtos premium a preços justos. Voltarei sempre."</p>
+                <cite>- Ana L., Fã da Marca</cite>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Loja Oficial — Kamote. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <p>Política de Privacidade | Termos de Uso</p>
+    </footer>
+
+    <!-- Modal do Carrinho -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Seu Carrinho</h2>
+                <button class="close-cart" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Itens serão adicionados aqui via JS -->
+            </div>
+            <div class="cart-total">
+                <p>Total: R$ <span id="cartTotal">0.00</span></p>
+                <button class="checkout-btn" onclick="alert('Checkout simulado! Em breve, integração com pagamento real.')">Finalizar Compra</button>
+            </div>
+        </div>
     </div>
 
-</div>
+    <script>
+        // Animações ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
 
-<footer>
-    © 2025 — Kamote. Todos os direitos reservados.
-</footer>
+        // Observar elementos
+        document.querySelectorAll('.trust-item, .section-title, .card, .testimonial').forEach(el => {
+            observer.observe(el);
+        });
 
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Sistema de Carrinho
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartCount = document.getElementById('cartCount');
+            cartCount.textContent = count;
+            cartCount.style.display = count > 0 ? 'flex' : 'none';
+        }
+
+        function renderCart() {
+            const cartItems = document.getElementById('cartItems');
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart"><i class="fas fa-shopping-cart" style="font-size: 3rem; color: #777; margin-bottom: 1rem;"></i><p>Seu carrinho está vazio.</p></div>';
+                return;
+            }
+
+            cartItems.innerHTML = cart.map((item, index) => `
+                <div class="cart-item animate">
+                    <span>${item.name} (x${item.quantity})</span>
+                    <span>R$ ${(item.price * item.quantity).toFixed(2)}</span>
+                    <button class="remove-item" onclick="removeFromCart(${index})">Remover</button>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotal').textContent = total.toFixed(2);
+        }
+
+        function addToCart(productId) {
+            const product = document.querySelector(`[data-product-id="${productId}"]`);
+            const name = product.dataset.productName;
+            const price = parseFloat(product.dataset.productPrice);
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id: productId, name, price, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+
+            // Animação de adição
+            const btn = event.target;
+            btn.textContent = 'Adicionado!';
+            btn.style.background = '#4caf50';
+            setTimeout(() => {
+                btn.textContent = 'Adicionar ao Carrinho';
+                btn.style.background = '#00eaff';
+            }, 1500);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            renderCart();
+
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const productId = e.target.closest('.card').dataset.productId;
+                    addToCart(productId);
+                });
+            });
+
+            document.getElementById('cartIcon').addEventListener('click', () => {
+                const modal = document.getElementById('cartModal');
+                modal.classList.add('show');
+                renderCart();
+            });
+
+            document.getElementById('closeCart').addEventListener('click', () => {
+                document.getElementById('cartModal').classList.remove('show');
+            });
+
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('cartModal');
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
